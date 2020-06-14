@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-444444
+<button id="btn">点击授权</button>
+
 <body onload="init()">
     <script type="text/javascript">
+        document.getElementById("btn").addEventListener("click", function () {
+            if (typeof DeviceMotionEvent.requestPermission === 'function') {
+
+                DeviceMotionEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            window.addEventListener('devicemotion', deviceMotionHandler, false);
+                        }
+                    })
+                    .catch((err) => {
+                        alert("用户未允许权限");
+                    });
+            }else{
+                alert("not found")
+            }
+        })
         var SHAKE_THRESHOLD = 3000;
         var last_update = 0;
         var x = y = z = last_x = last_y = last_z = 0;
@@ -16,16 +34,16 @@
                 if (typeof DeviceMotionEvent.requestPermission === 'function') {
 
                     DeviceMotionEvent.requestPermission()
-                    .then(permissionState => {
-                        if (permissionState === 'granted') {
-                            window.addEventListener('devicemotion',deviceMotionHandler,false);
-                        }
-                    })
-                    .catch((err)=>{
-                        errCb("用户未允许权限");
-                    });
+                        .then(permissionState => {
+                            if (permissionState === 'granted') {
+                                window.addEventListener('devicemotion', deviceMotionHandler, false);
+                            }
+                        })
+                        .catch((err) => {
+                            alert("用户未允许权限");
+                        });
                 }
-                else{
+                else {
                     window.addEventListener('devicemotion', deviceMotionHandler, false);
                 }
             } else {
@@ -52,4 +70,5 @@
         }
     </script>
 </body>
+
 </html>
