@@ -36,12 +36,12 @@
                     });
             } else {
                 // 其他支持加速度检测的系统
-                let timer = setTimeout(function(){
-                    errCb("用户未开启权限");
-                },1000);
-                window.addEventListener("devicemotion",(e)=>{
-                    clearTimeout(timer);
-                },{once:true});
+                // let timer = setTimeout(function(){
+                //     errCb("用户未开启权限");
+                // },1000);
+                // window.addEventListener("devicemotion",(e)=>{
+                //     clearTimeout(timer);
+                // },{once:true});
                 window.addEventListener("devicemotion",cb);
             }
         }
