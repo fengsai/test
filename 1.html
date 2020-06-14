@@ -46,16 +46,20 @@
                 window.addEventListener("devicemotion",cb,false);
             }
         }
+
+        // (e)=>{
+        //         let motion = e.acceleration;
+        //         alert(JSON.stringify(e))
+        //         let {x,y,z} = motion;
+        //         if(!getIos()){
+        //             x = -x;
+        //             y = -y;
+        //             z = -z;
+        //         } 
+        //     }
         document.ontouchstart=function(){
-            setDeviceMotion((e)=>{
-                let motion = e.acceleration;
-                alert(JSON.stringify(e))
-                let {x,y,z} = motion;
-                if(!getIos()){
-                    x = -x;
-                    y = -y;
-                    z = -z;
-                } 
+            setDeviceMotion(function(ev){
+                alert(JSON.stringify(ev))
             },(errMessage)=>{
                 alert(errMessage);
             }); // 最后这里一定要注意，在IOS 13.3中必须通过用户操作去获取该权限
