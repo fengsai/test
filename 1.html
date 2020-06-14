@@ -48,6 +48,7 @@
         document.ontouchstart=function(){
             setDeviceMotion((e)=>{
                 let motion = e.acceleration;
+                alert(JSON.stringify(e))
                 let {x,y,z} = motion;
                 if(!getIos()){
                     x = -x;
