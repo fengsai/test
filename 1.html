@@ -59,15 +59,16 @@
         //             z = -z;
         //         } 
         //     }
-        document.getElementById("woshidianji").ontouchstart=function(s){
+        document.getElementById("woshidianji").addEventListener("click",function(s){
             s.stopPropagation()
             s.preventDefault()
             setDeviceMotion(function(ev){
+                alert(2222)
                 alert(JSON.stringify(ev))
             },(errMessage)=>{
                 alert(errMessage);
             }); // 最后这里一定要注意，在IOS 13.3中必须通过用户操作去获取该权限
-        }
+        })
 
         window.addEventListener("devicemotion",(ev)=>{
             alert(JSON.stringify(e))
