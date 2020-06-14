@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    11111
+    111112222
     <button id="woshidianji">woshidianji</button>
     <!-- <script src='./src/cuerry.js'></script> -->
     <script>
@@ -68,6 +68,10 @@
                 alert(errMessage);
             }); // 最后这里一定要注意，在IOS 13.3中必须通过用户操作去获取该权限
         }
+
+        window.addEventListener("devicemotion",(ev)=>{
+            alert(JSON.stringify(e))
+        },false);
     </script>
 </body>
 </html>
