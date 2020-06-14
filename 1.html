@@ -28,7 +28,7 @@
                 DeviceMotionEvent.requestPermission()
                     .then(permissionState => {
                         if (permissionState === 'granted') {
-                            window.addEventListener('devicemotion',cb);
+                            window.addEventListener('devicemotion',cb,false);
                         }
                     })
                     .catch((err)=>{
@@ -43,13 +43,13 @@
                 // window.addEventListener("devicemotion",(e)=>{
                 //     clearTimeout(timer);
                 // },{once:true});
-                window.addEventListener("devicemotion",cb);
+                window.addEventListener("devicemotion",cb,false);
             }
         }
         document.ontouchstart=function(){
             setDeviceMotion((e)=>{
                 let motion = e.acceleration;
-                alert(JSON.stringify(motion))
+                alert(JSON.stringify(e))
                 let {x,y,z} = motion;
                 if(!getIos()){
                     x = -x;
